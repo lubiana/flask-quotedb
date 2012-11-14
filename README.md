@@ -14,7 +14,7 @@ from stable and the code is messy.
 * sqlalchemy-migrate
 * flask-wtf
 
-## Credits
+## Credits:
 
 This three tutorials enabled me to write the code.
 

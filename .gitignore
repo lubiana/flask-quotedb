@@ -1,0 +1,7 @@
+*.db
+*.pyc
+db_create.py
+db_migrate.py
+db_upgrade.py
+flask/
+db_repository/

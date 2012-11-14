@@ -19,7 +19,6 @@ def before_request():
 
 @app.route('/')
 @app.route('/index')
-@login_required
 def index():
 	quotes = Quote.query.all()
 	return render_template('index.html',
