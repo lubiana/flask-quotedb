@@ -1,0 +1,48 @@
+<html lang="en">
+<head>
+	<title>
+	{% if title %}
+		{{ title }} - 
+	{% endif %}
+		 qdb
+	</title>
+	<style type="text/css">
+		textarea{ width: 500px; height:100px;}
+</style>
+</head>
+<body>
+<div>
+<h1>QuoteDB</h1>
+<hr>
+
+{% if g.user.is_authenticated() %}
+	   <a href="{{ url_for('index') }}">Home</a>
+	 | <a href="{{ url_for('newQuote') }}">New Quote</a>
+	 | <a href="{{ url_for('logout') }}">logout</a> 
+	 | <a href="{{ url_for('profile') }}">change password</a>
+	{% if g.user.is_admin() %}
+		 | <a href="{{ url_for('admin') }}">admin</a>
+	{% endif %}
+	 | user: {{ g.user.username }} 
+	 | last seen: {{ g.user.last_seen }}
+{% else %}
+	   <a href="{{ url_for('login') }}">login</a>
+	 | <a href="{{ url_for('register') }}">register</a>
+{% endif %}
+<hr>
+</div>
+
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+<span>messages:</span> 
+	<ul>
+	{% for message in messages %}
+		<li>{{ message }}</li>
+	{% endfor %}	
+	</ul>
+<hr />
+{% endif %}
+{% endwith %}
+{% block content %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,11 @@
+{% from "_formhelpers.html" import render_field %}
+{% extends "main.html" %}
+{% block content %}
+<form method=post action="{{ url_for('newQuote') }}">
+	{{form.hidden_tag()}}
+  <dl>
+    {{ render_field(form.quote) }}
+  </dl>
+  <p><input type=submit value=safe>
+</form>
+{% endblock %}

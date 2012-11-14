@@ -1,0 +1,58 @@
+{% extends "main.html" %}
+{% block content %}
+<table border="1">
+	<tr>
+		<th>Userid</th>
+		<th>Username</th>
+		<th>Role</th>
+		<th>Status</th>
+		<th>Last seen</th>
+		<th colspan=2>control</th>
+	</tr>
+	{% for user in users %}
+	<tr>
+		<td>{{ user.id }}</td>
+		<td>{{ user.username }}</td>
+		<td>
+		{% if user.role == 1 %}
+			admin
+		{% else %}
+			user
+		{% endif %}
+		</td>
+		<td>
+		{% if user.active == 1 %}
+			active
+		{% else %}
+			inactive
+		{% endif %}
+		</td>
+		<td>{{ user.last_seen }}</td>
+		<td>
+		{% if user.role == 0 %}
+			<a href="{{ url_for('admin_action', action='make_admin', user_id=user.id) }}">
+				make admin
+			</a>
+		{% else %}
+			<a href="{{ url_for('admin_action', action='make_user', user_id=user.id) }}">
+				make user
+			</a>
+		{% endif %}
+		</td>
+		<td>
+		{% if user.active == 0 %}
+			<a href="{{ url_for('admin_action', action='make_active', user_id=user.id) }}">
+				activate
+			</a>
+		{% else %}
+			<a href="{{ url_for('admin_action', action='make_inactive', user_id=user.id) }}">
+				deactivate
+			</a>
+		{% endif %}
+		</td>
+	</tr>
+	{% endfor %}
+</table>
+
+{% endblock %}
+
