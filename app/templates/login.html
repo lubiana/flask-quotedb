@@ -2,7 +2,7 @@
 {% extends "main.html" %}
 {% block content %}
 <form method=post action="/login">
-	{{form.hidden_tag()}}
+	{{ form.hidden_tag() }}
   <dl>
     {{ render_field(form.username) }}
     {{ render_field(form.password) }}

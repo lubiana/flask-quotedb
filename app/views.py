@@ -12,6 +12,8 @@ from decorators import admin_required
 @app.before_request
 def before_request():
 	g.user = current_user
+	if not g.user.is_active:
+		flash('user is not activated')
 	if g.user.is_authenticated():
 		g.user.last_seen = datetime.utcnow()
 		db.session.add(g.user)
@@ -54,6 +56,7 @@ def deleteQuote(quote_id):
 	return redirect(url_for('index'))
 			
 @app.route('/register', methods=['GET', 'POST'])
+@admin_required
 def register():
 	form = RegisterForm()
 	if form.validate_on_submit():

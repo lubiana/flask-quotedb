@@ -21,6 +21,9 @@ class LoginForm(Form):
 		if user is None:
 			self.username.errors.append('User does not exist')
 			return False
+		if not user.is_active():
+			self.username.errors.append('User is not activated')
+			return False
 		if not user.check_password(self.password.data):
 			self.password.errors.append('Password is wrong')
 			return False

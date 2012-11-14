@@ -22,12 +22,12 @@
 	 | <a href="{{ url_for('profile') }}">change password</a>
 	{% if g.user.is_admin() %}
 		 | <a href="{{ url_for('admin') }}">admin</a>
+		 | <a href="{{ url_for('register') }}">register</a>
 	{% endif %}
 	 | user: {{ g.user.username }} 
 	 | last seen: {{ g.user.last_seen }}
 {% else %}
 	   <a href="{{ url_for('login') }}">login</a>
-	 | <a href="{{ url_for('register') }}">register</a>
 {% endif %}
 <hr>
 </div>
