@@ -8,11 +8,11 @@ This is a small webapp i build to learn programming in python. It is far
 from stable and the code is messy.
 
 ## Requirements:
-flask
-flask-login
-flask-sqlalchemy
-sqlalchemy-migrate
-flask-wtf
+*flask
+*flask-login
+*flask-sqlalchemy
+*sqlalchemy-migrate
+*flask-wtf
 
 ## Credits
 
