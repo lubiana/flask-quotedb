@@ -56,7 +56,6 @@ def deleteQuote(quote_id):
 	return redirect(url_for('index'))
 			
 @app.route('/register', methods=['GET', 'POST'])
-@admin_required
 def register():
 	form = RegisterForm()
 	if form.validate_on_submit():
