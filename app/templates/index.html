@@ -6,10 +6,12 @@
 		<p>
 			<small>
 				by: <em>{{ quote.user.username }}</em>
+				{% if not g.user.is_anonymous() %}
 				{% if quote.user.id == g.user.id or g.user.is_admin() %}
 				| <a href="{{ url_for('deleteQuote', quote_id=quote.id) }}">
 					delete
 				</a>
+				{% endif %}
 			{% endif %}
 		</small>
 			<pre>{{ quote.body }}</pre>
